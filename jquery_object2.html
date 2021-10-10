@@ -1,0 +1,14 @@
+<ul>
+    <li>html</li>
+    <li>css</li>
+    <li>JavaScript</li>
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+    var li = $('li');
+    li.map(function(index, elem){
+        console.log(index, elem);
+        $(elem).css('color', 'red');
+        //  elem과 같은 dom 객체를 jquery 함수$() 로 감싸서 method css 를 호출한다. 
+    })
+</script>
