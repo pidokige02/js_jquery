@@ -1,0 +1,15 @@
+<body>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+    // jQuery는 존재하지 않는 엘리먼트에게도 이벤트를 설치할 수 있다.
+    // 'ul' 는 동작하지 않으므로 'body'로 event 연결함  
+    $('body').on('click','a, li', function(event){
+        console.log(this.tagName);
+    })
+</script>
+<ul>
+    <li><a href="#">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">JavaScript</a></li>
+</ul>
+</body>

@@ -1,0 +1,15 @@
+<input type="text" id="target"></textarea>
+<input id="remove"  type="button" value="remove" />
+<p id="status"></p>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+  var handler = function(e){
+    $('#status').text(e.type+Math.random());
+  };
+  $('#target').on('focus blur', handler)
+  $('#remove').on('click' , function(e){
+    // 이벤트를 제거할 때는 off를 사용
+    $('#target').off('focus blur', handler);
+    console.log(32);
+  })
+</script>

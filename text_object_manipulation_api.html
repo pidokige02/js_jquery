@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    #target{
+        font-size:77px;
+        font-family: georgia;
+        border-bottom:1px solid black;
+        padding-bottom:10px;
+    }
+    p{
+        margin:5px;
+    }
+    </style>
+</head>
+<body>
+<p id="target">Cording everybody!</p>
+<p> data : <input type="text" id="datasource" value="JavaScript" /></p>
+<p>   start :<input type="text" id="start" value="5" /></p>
+<p> end : <input type="text" id="end" value="5" /></p>
+<p><input type="button" value="appendData(data)" onclick="callAppendData()" />
+<input type="button" value="deleteData(start,end)" onclick="callDeleteData()" />
+<input type="button" value="insertData(start,data)" onclick="callInsertData()" />
+<input type="button" value="replaceData(start,end,data)" onclick="callReplaceData()" />
+<input type="button" value="substringData(start,end)" onclick="callSubstringData()" /></p>
+<script>
+    var target = document.getElementById('target').firstChild;
+    var data = document.getElementById('datasource');
+    var start = document.getElementById('start');
+    var end = document.getElementById('end');
+    function callAppendData(){
+        target.appendData(data.value);
+    }
+    function callDeleteData(){
+        target.deleteData(start.value, end.value);
+        // start.value index부터 end.value 갯수만큼 지운다
+    }
+    function callInsertData(){
+        target.insertData(start.value, data.value); 
+        // start.value index부터  data.value픞 추가한다.
+    }
+    function callReplaceData(){
+        target.replaceData(start.value, end.value, data.value);
+        // start.value index 부터 end.value 갯수만큼 잘라내고 data.value로 교체한다.
+    }
+    function callSubstringData(){
+        alert(target.substringData(start.value, end.value));
+        // start.value index 부터 end.value 갯수 만큼 string 화 시켜서 표시한다.
+    }
+</script>
+</body>
+</html>

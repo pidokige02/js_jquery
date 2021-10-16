@@ -1,0 +1,11 @@
+<input type="button" id="target" value="button" />
+<script>
+    var t = document.getElementById('target');
+    t.addEventListener('click', function(event){
+        alert(1);
+    });
+    t.addEventListener('click', function(event){
+        alert(2);
+    });
+    // 나의 이벤트 대상에 복수의 동일 이벤트 타입 리스너를 등록
+</script>

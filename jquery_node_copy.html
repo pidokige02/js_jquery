@@ -1,0 +1,23 @@
+<div class="target" id="target1">
+    target 1
+</div>
+
+<div class="target" id="target2">
+    target 2
+</div>
+
+<div id="source">source</div>
+
+<input type="button" value="clone replaceAll target 1" id="btn1" />
+<input type="button" value="clone replaceWith target 2" id="btn2" />
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+    $('#btn1').click(function(){
+        $('#source').clone().replaceAll('#target1');
+        //#source과 동일한 것을 만들고, #target1 을 만든것으로 교체한다.
+    })
+    $('#btn2').click(function(){
+        $('#target2').replaceWith($('#source').clone());
+        // #source을 clone 하여 만든다음 #target2을 만든것으로 교체한다.    
+    })
+</script>

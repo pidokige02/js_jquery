@@ -1,0 +1,20 @@
+<ul id="target">
+    <li>HTML</li>
+    <li>CSS</li>
+</ul>
+<input type="button" onclick="get();" value="get" />
+<input type="button" onclick="set();" value="set" />
+<script>
+    function get(){
+        var target = document.getElementById('target');
+        alert(target.innerText);
+        // HTML 코드를 제외한 문자열을 리턴
+    }
+    function set(){
+        var target = document.getElementById('target');
+        //target.innerText = "<li>JavaScript Core</li><li>BOM</li><li>DOM</li>";
+        target.innerText = "dddddddddddddddddddddddd";
+
+        // 값을 변경할 때는 HTML의 코드를 그대로 추가
+    }
+</script>

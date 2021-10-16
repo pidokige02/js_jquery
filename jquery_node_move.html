@@ -1,0 +1,14 @@
+<div class="target" id="target1">
+    target 1
+</div>
+
+<div id="source">source</div>
+
+<input type="button" value="append source to target 1" id="btn1" />
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+    $('#btn1').click(function(){
+        $('#target1').append($('#source'));
+        // #target1 의 마지막 위치에 #source 을 insert 시킨다.
+    })
+</script>
