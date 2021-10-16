@@ -1,0 +1,16 @@
+<p>time : <span id="time"></span></p>
+<input type="button" id="execute" value="execute" />
+<script>
+document.querySelector('input').addEventListener('click', function(event){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', './time.php');
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+            // 4는 통신이 완료되었음을 의미한다. status는 HTTP 통신의 결과를 의미하는데 200은 통신이 성공했음을 의미한다.            
+            document.querySelector('#time').innerHTML = xhr.responseText;
+            //responseText 프로퍼티는 서버에서 전송한 데이터를 담고.
+        }
+    }
+    xhr.send(); 
+}); 
+</script> 
