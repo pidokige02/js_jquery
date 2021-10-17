@@ -8,6 +8,10 @@ document.querySelector('input').addEventListener('click', function(event){
         if(xhr.readyState === 4 && xhr.status === 200){
             var _tzs = xhr.responseText;
             var tzs = _tzs.split(',');
+            // 메소드 split는 인자의 값을 기준으로 문자를 잘라서 배열
+            // 서버에서 전송한 Asia/Seoul,America/New_York를 split(',')하면 배열 ['Aasia/Seoul','America/New_York']가 만들어진다.
+            // PHP의 배열을 그대로 자바스크립트에서 사용할 수 있다면? 
+            // 반대로 자바스크립트의 배열을 그대로 PHP에서 사용할 수 있다면 얼마나 편리할까? 이 때 사용하는 것이 JSON
             var _str = '';
             for(var i = 0; i< tzs.length; i++){
                 _str += '<li>'+tzs[i]+'</li>';

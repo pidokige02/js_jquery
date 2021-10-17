@@ -8,6 +8,7 @@ document.querySelector('input').addEventListener('click', function(event){
         if(xhr.readyState === 4 && xhr.status === 200){
             var _tzs = xhr.responseText;
             var tzs = JSON.parse(_tzs);
+            // 전달된 문사열을 자바스크립트의 배열로 변환
             var _str = '';
             for(var i = 0; i< tzs.length; i++){
                 _str += '<li>'+tzs[i]+'</li>';
