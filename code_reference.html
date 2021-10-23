@@ -1,0 +1,191 @@
+<html>
+    <meta charset="utf-8">
+    <body>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <h1>String</h1> 
+        <input class="btn" type="button" onclick="string_charAt()" value="charAt" /> charAt() <br />
+        <input class="btn" type="button" onclick="string_charCodeAt()" value="charCodeAt" /> charCodeAt() <br />
+        <input class="btn" type="button" onclick="string_concat()" value="concat" /> concat() <br />
+        <input class="btn" type="button" onclick="string_indexOf()" value="indexOf" /> indexOf() <br />
+        <input class="btn" type="button" onclick="string_lastIndexOf()" value="lastIndexOf" /> lastIndexOf() <br />
+        <input class="btn" type="button" onclick="string_localeCompare()" value="localeCompare" />localeCompare() <br />
+        <input class="btn" type="button" onclick="string_match()" value="match" />match() <br />
+        <input class="btn" type="button" onclick="string_replace()" value="replace" />replace() <br />
+        <input class="btn" type="button" onclick="string_search()" value="search" />search() <br />
+        <input class="btn" type="button" onclick="string_slice()" value="slice" />slice() <br />
+        <input class="btn" type="button" onclick="string_split()" value="split" />split() <br />
+        <input class="btn" type="button" onclick="string_substr()" value="substr" />substr() <br />
+        <input class="btn" type="button" onclick="string_toLowerCase()" value="string_toLowerCase" />string_toLowerCase() <br />
+        <input class="btn" type="button" onclick="string_toUpperCase()" value="string_toUpperCase" />string_toUpperCase() <br />
+        <h1>Array (배열)</h1> 
+
+        <script type="text/javascript">
+        function string_charAt()         {
+            var stringName = 'coding everybody';
+            alert(stringName.charAt(0)); // c
+            alert(stringName.charAt(stringName.length-1)); // y
+            alert(stringName.charAt(1000) == ''); // true  
+// 문자열에 속하는 문자는 왼쪽부터 오른쪽까지 0부터 인덱싱되어 있다.
+// charAt은 index로 주어진 값에 해당하는 문자를 리턴한다.
+// 인덱스는 0부터 시작하기 때문에 index로 들어갈 수 있는 가장 큰 수는 (문자열.legnth-1)이다.
+// 존재하지 않는 index를 인자로 전달하면 공백이 출력된다.
+// charAt 는 index에 해당하는 문자를 리턴하고, chartCodeAt은 유니코드 값을 리턴하는 차이가 있다
+        }
+        function string_charCodeAt()         {
+            var stringName = '생활코딩'
+            alert(stringName.charCodeAt(0)); // 493373 
+// http://www.unicode.org/charts/PDF/UAC00.pdf 에서 '생'을 찾아보면 'C0DD'인데 이것은 16진수다. 
+// 이를 10진수로 변환하면 493373이 된다. 
+// 유니코드는 모든 시스템에서 일관되게 문자를 표현하기 위한 산업표준이다.
+// charCodeAt은 주어진 index에 해당하는 유니코드 값을 리턴하는데 이 값은 unicode가 지원되는 모든 시스템에서 동일한 문자를 가르킨다.
+// charAt 는 index에 해당하는 문자를 리턴하고, chartCodeAt은 유니코드 값을 리턴하는 차이가 있다.
+        }
+
+        function string_concat()         {
+            s1="생활"
+            s2="코딩"
+            s3="-"
+            s4="자바스크립트로 배우는 프로그래밍"
+            s5=s1.concat(s2,s3,s4) // returns "생활코딩-자바스크립트로 배우는 프로그래밍"
+            alert(s5);
+            alert(s1+','+s2+','+s3+','+s4) // 인자로 전달된 변수들의 값은 변경되지 않는다
+        }
+
+        function string_indexOf()         {
+            var stringValue = '생활코딩 - 자바스크립트 레퍼런스';
+            alert(stringValue.indexOf('생활')); // 0
+            alert(stringValue.indexOf('코딩')); // 2
+            alert(stringValue.indexOf('PHP')); // -1, PHP는 stringValue안에 존재하지 않는다
+            
+            alert(stringValue.indexOf('자바스크립트',0)); // 7
+            alert(stringValue.indexOf('자바스크립트',2)); // 7, 두번째 인자로 2가 주어지면 탐색의 대상이 '코딩 - 자바스크립트 레퍼런스'로 줄어든다. index 값은 변하지 않는다
+            alert(stringValue.indexOf('자바스크립트',10)); // -1, '크립트 레퍼런스'에는 '자바스크립트'가 없기 때문에 -1을 리턴한다 
+        } 
+
+        function string_lastIndexOf()         {
+            var stringName = 'everybody';
+            alert(stringName.lastIndexOf('every')); // 0
+            
+            var stringName = 'coding everybody';
+            alert(stringName.lastIndexOf('every')); // 7
+            
+            var stringName = 'coding everybody everywhere';
+            alert(stringName.indexOf('every')); // 7, lastIndexOf와 indexOf의 차이        } 
+        }
+
+        function string_localeCompare()         {
+            alert('a'.localeCompare('b')); // -1
+            alert('b'.localeCompare('a')); // 1
+            alert('b'.localeCompare('b')); // 0  
+        // 비교 결과에 따른 숫자를 반환          
+        }
+
+        function string_match()         {
+            var str="coding everybody, everywhere, everytime";
+            var patt1=/every.+/gi;
+            alert(str.match(patt1)); // [everybody, everywhere, everytime] 배열을 반환함
+            // 주어진 정규표현식과 일치하는 문자열을 반환       
+        }
+
+        function string_replace()         {
+            var str="000님  환영합니다. hello world"; 
+            alert(str.replace('000', 'egoing')); // 문자를 이용해서 값을 치환
+            alert(str.replace(/000/gi, 'egoing')); // 정규표현식을 이용해서 값을 치환            // 주어진 정규표현식과 일치하는 문자열을 반환       
+            // 문자열에서 주어진 패턴(regexp|substr)에 해당하는 부분을 새로운 데이터(newSubStr)로 치환 후 반환.
+        }
+
+        function string_search()         {
+            var str="coding everybody";
+            alert(str.search('e'));  // 7, 인자로 문자열을 전달하면 암시적으로 정규표현식 객체로 형변환
+            alert(str.search(/e/));  // 7, 정규표현식을 이용해서 위치를 검색            // 문자열에서 주어진 패턴(regexp|substr)에 해당하는 부분을 새로운 데이터(newSubStr)로 치환 후 반환.
+            // indexOf, lastIndexOf 와 다른 점은 전자가 검색대상으로 문자열을 사용하지만, search는 정규표현식을 사용함    
+        }
+
+        function string_slice()         {
+            var str = 'coding everybody';
+            alert(str.slice(6,12)) // every
+            alert(str.slice(6)) // everybody, 두번째 인자를 생략했기 때문에 문자열 전체를 대상으로 검색
+            alert(str.slice(-6)) // rybody, 첫번째 인자가 음수이면 문자의 끝에서부터 검색함
+            alert(str) // coding everybody, str의 원래 값은 변하지 않음        
+        }
+
+        function string_split()         {
+            var str = 'html,css,javascript,jquery,apache,php';
+            str.split(',') //배열 [html,css,javascript,jquery,apache,php]
+            str1 = str.split(',',2) // 배열 [html,css]         
+            alert(str1)
+
+            // &로 되어 있는 구분자를 ,로 변경하는 예제 
+            var emails = 'a@cb.com&b@cb.com&c@cb.com&d@cb.com'; 
+            emailArray = emails.split('&');
+            emailStr = '';
+            for(var i = 0 ; i < emailArray.length ; i++){
+                emailStr += emailArray[i]+','
+            }
+            alert(emailStr) // a@cb.com,b@cb.com,c@cb.com,d@cb.com,   
+
+            // split와 join을 이용해서 처리 이메일 구분자를 변경 
+            var emails = 'a@cb.com&b@cb.com&c@cb.com&d@cb.com'; 
+            emailArray = emails.split('&');
+            emailStr = emailArray.join(',');
+            alert(emailStr) // a@cb.com,b@cb.com,c@cb.com,d@cb.com    
+        }
+
+        function string_substr()         {
+            var str = 'coding everybody';
+            alert(str.substr(7)) // everybody
+            alert(str.substr(7,5)) // every
+            alert(str.substr(-4)) // body, 음수인 경우 뒤에서부터 카운팅 alert(str.substr(-4,2)) // bo
+            alert(str);
+            // 문자열에서 특정한 구간의 문자열을 추출한다        
+        }
+
+        function string_substring()         {
+            var str = 'coding everybody';
+            alert(str.substring(0)) // coding everybody 
+            alert(str.substring(0,6)) // coding 
+            alert(str.substring(7,0));  // coding 
+            alert(str.substring(7,2)); // ding            
+            // 문자열에서 string, from과 to 사이의 문자열을 추출한다        
+        }
+
+        function string_toLowerCase()         {
+            var str = 'Coding EveryBody';
+            alert(str.toLowerCase()); // coding everybody       
+            // 문자열을 소문자로 변환해서 반환       
+        }
+
+        function string_toUpperCase()         {
+            var str = 'Coding EveryBody';
+            alert(str.toUpperCase()); // CODING EVERYBODY      
+            // 문자열을 대문자로 변환해서 반환       
+        }        
+
+        function array_example()         {
+            // Array를 선언하는 방법, a, b, c가 같다.
+            var a = new Array(1,2,3);
+            var b = [1,2,3];
+            var c = new Array();
+            c.push(1); 
+            c.push(2);
+            c.push(3);      
+            // Array와 반복문
+            var a = new Array(1,2,3);
+            for(var i = 0; i < a.length; i++){
+                alert(a[i]); // array a의 인덱스로 i를 0부터 2까지 순차적으로 대입한 후에 alert
+            }
+            // 첫번째 인자의 형식에 따른 차이
+            var a = new Array(5);
+            alert(a); // 값이 없는 5개의 원소를 포함한 array를 생성한다. [undefined,undefined,undefined,undefined,undefined]
+            
+            var b = new Array('5');
+            alert(b); // string object 5를 원소로 하는 array를 생성한다. ["5"]
+            
+            var c = new Array(new Number(5))
+            alert(c); // number object 5를 원소로 하는 array를 생성한다. [5] 
+        
+        }        
+
+    </script>
+    </body>
+</html>
