@@ -66,6 +66,23 @@
         <input class="btn" type="button" onclick="Date_setMonth()" value="Date_setMonth" />Date_setMonth() <br />
         <input class="btn" type="button" onclick="Date_setSeconds()" value="Date_setSeconds" />Date_setSeconds() <br />
         <input class="btn" type="button" onclick="Date_setTime()" value="Date_setTime" />Date_setTime() <br />
+        <input class="btn" type="button" onclick="Date_setUTCDate()" value="Date_setUTCDate" />Date_setUTCDate() <br />
+        <input class="btn" type="button" onclick="Date_setUTCFullYear()" value="Date_setUTCFullYear" />Date_setUTCFullYear() <br />
+        <h1>global</h1>
+        <input class="btn" type="button" onclick="global_decodeURI()" value="global_decodeURI" />global_decodeURI() <br />
+        <input class="btn" type="button" onclick="global_decodeURIComponent()" value="global_decodeURIComponent" />global_decodeURIComponent() <br />
+        <input class="btn" type="button" onclick="global_encodeURI()" value="global_encodeURI" />global_encodeURI() <br />
+        <input class="btn" type="button" onclick="global_encodeURIComponent()" value="global_encodeURIComponent" />global_encodeURIComponent() <br />
+        <input class="btn" type="button" onclick="global_escape()" value="global_escape" />global_escape() <br />
+        <input class="btn" type="button" onclick="global_isFinite()" value="global_isFinite" />global_isFinite() <br />
+        <input class="btn" type="button" onclick="global_isNaN()" value="global_isNaN" />global_isNaN() <br />
+        <input class="btn" type="button" onclick="global_Number()" value="global_Number" />global_Number() <br />
+        <input class="btn" type="button" onclick="global_parseFloat()" value="global_parseFloat" />global_parseFloat() <br />
+        <input class="btn" type="button" onclick="global_parseInt()" value="global_parseInt" />global_parseInt() <br />
+        <input class="btn" type="button" onclick="global_String()" value="global_String" />global_String() <br />
+        <input class="btn" type="button" onclick="global_unescape()" value="global_unescape" />global_unescape() <br />
+        <h1>RegExp</h1>
+        <input class="btn" type="button" onclick="global_RegExp()" value="global_RegExp" />global_RegExp() <br />
                                             
         <script type="text/javascript">
         function string_charAt()         {
@@ -615,6 +632,163 @@
             alert(t+'  , '+t2);        
         }
 
+        function Date_setUTCDate()         {
+            // UTC를 기준으로 일(day)을 지정한다.
+            var t = new Date(1980,1,3);
+            t.setUTCDate(10);
+            alert(t); //Mon Feb 11 1980 00:00:00 GMT+0900        
+        }
+
+        function Date_setUTCFullYear()         {
+            // UTC를 기준으로 년, 월, 일(year)을 지정한다.
+            var t = new Date(1980,1,3);
+            t.setUTCFullYear(1979,11,16);
+            alert(t); // 문자열, Mon Dec 17 1979 00:00:00 GMT+0900        
+        }
+
+        function global_decodeURI()         {
+            // encodeURI를 통해서 만들어진 URI 이스케이핑을 디코드
+            var original = 'http://opentutorials.org/javascript_reference/?id=155&name=안녕하세요'
+            var before = encodeURI(original);
+            alert(before); // string, http://opentutorials.org/javascript_reference/?id=155&name=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94
+            var after = decodeURI(before);
+            alert(after); // string, http://opentutorials.org/javascript_reference/?id=155&name=안녕하세요        
+        }
+
+        function global_decodeURIComponent()         {
+            // encodeURIComponent를 통해서 만들어진 URI 이스케이핑을 디코드
+            var original = 'http://opentutorials.org/javascript_reference/?id=155&name=안녕하세요'
+            var before = encodeURIComponent(original);
+            alert(before); // string, http://opentutorials.org/javascript_reference/?id=155&name=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94
+            var after = decodeURIComponent(before);
+            alert(after); // string, http://opentutorials.org/javascript_reference/?id=155&name=안녕하세요        
+        }
+
+        function global_encodeURI()         {
+            // URI를 전달 할 때 문제가 없도록 인코딩
+            var original = 'http://opentutorials.org/javascript_reference/?id=155&name=안녕하세요'
+            var before = encodeURI(original);
+            alert(before); // string, http://opentutorials.org/javascript_reference/?id=155&name=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94
+            var after = decodeURI(before);
+            alert(after); // string, http://opentutorials.org/javascript_reference/?id=155&name=안녕하세요        
+        }
+
+        function global_encodeURIComponent()         {
+            // URI로 데이터를 전달하기 위해서 문자열을 인코딩
+            var title = '생활코딩&코딩생활';
+            var str = 'http://opentutorials.org?title='+encodeURIComponent(title);
+            alert(str);        
+        }
+
+        function global_escape()         {
+            // URI로 데이터를 전달하기 위해서 문자열을 인코딩
+            var title = '생활코딩&코딩생활';
+            var str = 'http://opentutorials.org?title='+escape(title);
+            alert(str);        
+        }
+
+        function global_isFinite()         {
+            // 유한한 수인경우 true, 그렇지 않으면 false
+            alert(isFinite(1)); // true
+            alert(isFinite(-10.999)); // true
+            alert(isFinite(0)); // true
+            alert(isFinite('생활코딩')); // false        
+        }
+
+        function global_isNaN()         {
+            // 유한한 수인경우 true, 그렇지 않으면 false
+            alert(isNaN(1)); // false
+            alert(isNaN(0)); // false
+            alert(isNaN(-12.21)); // false
+            alert(isNaN('생활코딩')); // true        
+        }
+
+        function global_isNaN()         {
+            // 유한한 수인경우 true, 그렇지 않으면 false
+            alert(isNaN(1)); // false
+            alert(isNaN(0)); // false
+            alert(isNaN(-12.21)); // false
+            alert(isNaN('생활코딩')); // true        
+        }
+
+        function global_Number()         {
+            // 객체(object)를 수(number)로 변환
+            var t = new Object();
+            alert(Number(t)); // NaN
+            
+            var t = new Boolean(true);
+            alert(Number(t)); // number, 1
+            
+        
+            var t = new Boolean(false);
+            alert(Number(t)); // number, 0
+            
+            var t = new Date(1980,1,3);
+            alert(Number(t)); // number, 318351600000
+            
+            var t = new String('codingeverybody');
+            alert(Number(t)); // number, NaN
+            
+            var t = new String('1000');
+            alert(Number(t)); // number, 1000        
+        }
+
+        function global_parseFloat()         {
+            //문자열을 부동소수점(floating point number)로 변환
+            alert(parseFloat('10')); // number, 10
+            alert(parseFloat(10)); // number, 10
+            alert(parseFloat('10 20 30')); // number, 10
+            alert(parseFloat('10 test')); // number, 10
+            alert(parseFloat('test 10')); // NaN        
+        }
+
+        function global_parseInt()         {
+            //문자열을 해석(parse)해서 정수(integer)를 리턴
+            alert(parseInt(5)); // number, 5
+            alert(parseInt(5.5)); // number, 5
+            alert(parseInt('30 40 50')); // number, 30
+            alert(parseInt(' 40 ')); // number, 40
+            alert(parseInt('50 codingeverybody')); // number, 50
+            alert(parseInt('codingeverybody 50 ')); // NaN
+                
+            alert(parseInt(010)); // number, 8
+            alert(parseInt(0x10)); // nuber, 16
+            alert(parseInt('10', 16)); // nuber, 16    
+        }
+
+        function global_String()         {
+            //객체(object)의 값을 문자열로 리턴
+            var t = new Boolean(1);
+            alert(String(t)); // string, true
+            
+            var t = new Boolean(0);
+            alert(String(t)); // string, false
+            
+            var t = new Date(1980,1,3);
+            alert(String(t)); // string, Sun Feb 03 1980 00:00:00 GMT+0900
+            
+            var t = [1,2,3];
+            alert(String(t)); // string, 123
+        }
+
+        function global_unescape()         {
+            //escape를 통해서 만들어진 URI 이스케이핑을 디코드
+            var original = 'http://opentutorials.org/javascript_reference/?id=155&name=안녕하세요'
+            var before = escape(original);
+            alert(before); // string, http://opentutorials.org/javascript_reference/?id=155&name=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94
+            var after = unescape(before);
+            alert(after); // string, http://opentutorials.org/javascript_reference/?id=155&name=안녕하세요
+        }
+
+        function global_RegExp()         {
+            //escape를 통해서 만들어진 URI 이스케이핑을 디코드
+            var re = /(\w+)\s(\w+)/; // 가운데 공백(\s)이 들어가는 단어(\w)와 단어를 찾아서 참조(괄호)할 수 있게 한다.
+            var str = "coding everybody";
+            var newstr = str.replace(re, "$2, $1"); // string object의 replace 메소드를 이용해서 첫번째 참조와 두번째 참조의 순서를 바꾸고 그 사이에 ','를 넣는다.
+            alert(newstr); // everybody, coding        
+        }
+
+        
     </script>
     </body>
 </html>
